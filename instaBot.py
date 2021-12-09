@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome(executable_path="C:/Users/Elève/Desktop/projet/ytb tuto code/video/tuto instabot/chromedriver.exe")
 
-sdbUsername = '[your username]'
+sdbUsername = '[your email]'
 sdbPassword = '[your password]'
 
 def Start():
@@ -70,7 +70,20 @@ def Follow(url):
 
     except:
         try:
-            if driver.find_element(By.CLASS_NAME, "T0kll"):
+            if driver.find_element(By.CLASS_NAME, "y3zKF"):
+                driver.find_element(By.CLASS_NAME, "y3zKF").click()
+
+                follow = False
+                while follow == False:
+                    try:
+                        if driver.find_element(By.CLASS_NAME, "T0kll"):
+                            print("follow was executed")
+                            follow = True
+
+                    except:
+                        pass
+
+            elif driver.find_element(By.CLASS_NAME, "T0kll"):
                 print("follow was already executed")
                 follow = True
 
