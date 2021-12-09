@@ -78,6 +78,26 @@ def Follow(url):
             print("an error was happened in the following")
 
 
+def LikeByUser(url, postsIndex):
+    driver.get(url)
+    posts = driver.find_elements(By.CLASS_NAME, "_9AhH0")
+
+    for i in postsIndex:
+        posts[i].click()
+
+        like = False
+        while like == False:
+            try:
+                if driver.find_elements(By.CLASS_NAME, "fr66n")[0]:
+                    driver.find_elements(By.CLASS_NAME, "fr66n")[0].click()
+                    print("post was like")
+                    driver.find_element(By.CLASS_NAME, "yiMZG").click()
+                    like = True
+
+            except:
+                pass
+
+
 def Close():
     driver.close()
 
@@ -87,4 +107,6 @@ Start()
 Cookies()
 Login(sdbUsername, sdbPassword)
 Follow("https://www.instagram.com/instagram/")
+LikeByUser("https://www.instagram.com/instagram/", [0])
+#in the array we indicate the indexes of the publications that we want to like, index 0 corresponds to the most recent publication
 Close()
