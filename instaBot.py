@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-driver = webdriver.Chrome(executable_path="C:/Users/Elève/Desktop/projet/ytb tuto code/video/tuto instabot/chromedriver.exe")
+driver = webdriver.Chrome(executable_path="C:/Users/Elève/Desktop/projet/ytb tuto code/code/tuto instabot/chromedriver.exe")
 
 sdbUsername = '[your username]'
 sdbPassword = '[your password]'
@@ -57,14 +57,22 @@ def Login(username, password):
 def Follow(url):
     driver.get(url)
     try:
-        driver.find_element(By.CLASS_NAME, "yZn4P").click()
-
-        follow = False
-        while follow == False:
+        button = False
+        while button == False:
             try:
-                if driver.find_element(By.CLASS_NAME, "T0kll"):
-                    print("follow was executed")
-                    follow = True
+                if driver.find_element(By.CLASS_NAME, "y3zKF"):
+                    button = True
+                    driver.find_element(By.CLASS_NAME, "y3zKF").click()
+
+                    follow = False
+                    while follow == False:
+                        try:
+                            if driver.find_element(By.CLASS_NAME, "T0kll"):
+                                print("follow was executed")
+                                follow = True
+
+                        except:
+                            pass
 
             except:
                 pass
@@ -133,6 +141,7 @@ def Comment(url, postsIndex, message):
             except:
                 pass
 
+
 def Close():
     driver.close()
 
@@ -141,8 +150,7 @@ def Close():
 Start()
 Cookies()
 Login(sdbUsername, sdbPassword)
-Comment("https://www.instagram.com/instagram/", [0], "hey")
-# Follow("https://www.instagram.com/instagram/")
+# Comment("https://www.instagram.com/instagram/", [0], "hey")
+Follow("https://www.instagram.com/instagram/")
 # LikeByUser("https://www.instagram.com/instagram/", [0])
-#in the array we indicate the indexes of the publications that we want to like, index 0 corresponds to the most recent publication
 Close()
