@@ -32,7 +32,8 @@ def Login(username, password):
                     driver.find_element(By.NAME, "password").send_keys(password)
                     cookies = True
 
-                    driver.find_element(By.CLASS_NAME, "IwRSH").click()
+                   
+                    driver.find_elements(By.CLASS_NAME, "IwRSH")[1].click()
 
                     connect = False
                     while connect == False:
@@ -97,7 +98,7 @@ def LikeByUser(url, postsIndex):
                         if driver.find_elements(By.CLASS_NAME, "fr66n")[0]:
                             driver.find_elements(By.CLASS_NAME, "fr66n")[0].click()
                             print("post liké")
-                            driver.find_element(By.CLASS_NAME, "yiMZG").click()
+                            driver.find_element(By.CLASS_NAME, "NOTWr").click()
                             like = True
 
                     except:
@@ -123,7 +124,7 @@ def Comment(url, postsIndex, message):
                             driver.find_element(By.CLASS_NAME, "Ypffh").send_keys(message)
                             driver.find_element(By.CLASS_NAME, "Ypffh").send_keys(Keys.ENTER)
                             print("post commenté")
-                            driver.find_element(By.CLASS_NAME, "yiMZG").click()
+                            driver.find_element(By.CLASS_NAME, "NOTWr").click()
                             comment = True
 
                     except:
@@ -131,8 +132,8 @@ def Comment(url, postsIndex, message):
 
 Start()
 Cookies()
-Login("sitita5859@ningame.com", "tuto_instabot_290")
-# Follow("https://www.instagram.com/instagram")
-# LikeByUser("https://www.instagram.com/instagram", [0])
-Comment("https://www.instagram.com/instagram", [0], "hey")
+Login("[your mail]", "[your password]")
+Follow("https://www.instagram.com/instagram")
+# LikeByUser("https://www.instagram.com/instagram", [1])
+# Comment("https://www.instagram.com/instagram", [0], "hey")
 driver.close()
